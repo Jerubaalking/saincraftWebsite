@@ -4,10 +4,12 @@ const { engine } = require('express-handlebars');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const path = require('path');
+const cors = requirea('cors');
 const app = express();
 
 
 dotenv.config({ path: './config/config.env' });
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/public', express.static(path.resolve(__dirname + process.env.D_PUBLIC)));
