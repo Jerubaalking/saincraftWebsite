@@ -10,7 +10,7 @@ const app = express();
 
 dotenv.config({ path: './config/config.env' });
 app.use(cors({
-    origin: 'https://www.saincrafttechnologies.com'
+    origin: 'https://saincrafttechnologies-static-public-2023.fra1.cdn.digitaloceanspaces.com'
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
