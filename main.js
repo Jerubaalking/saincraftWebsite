@@ -9,7 +9,9 @@ const app = express();
 
 
 dotenv.config({ path: './config/config.env' });
-app.use(cors());
+app.use(cors({
+    origin: 'https://www.saincrafttechnologies.com'
+}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/public', express.static(path.resolve(__dirname + process.env.D_PUBLIC)));
