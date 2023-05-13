@@ -4,7 +4,7 @@ const { engine } = require('express-handlebars');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const path = require('path');
-// const cors = requirea('cors');
+const cors = requirea('cors');
 const app = express();
 
 
@@ -12,6 +12,19 @@ dotenv.config({ path: './config/config.env' });
 // app.use(cors({
 //     origin: 'https://saincrafttechnologies-static-public-2023.fra1.cdn.digitaloceanspaces.com'
 // }));
+const whitelist = ['http://saincrafttechnologies.com', 'http://www.saincrafttechnologies.com', 'https://saincrafttechnologies-static-public-2023.fra1.cdn.digitaloceanspaces.com']
+const corsOptions = {
+    origin: (origin, callback) => {
+        if (whitelist.indexOf(origin) !== -1) {
+            callback(null, true)
+        } else {
+            callback(new Error())
+        }
+    },
+    methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH']
+
+}
+app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/public', express.static(path.resolve(__dirname + process.env.D_PUBLIC)));
