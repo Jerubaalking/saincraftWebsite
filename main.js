@@ -10,7 +10,7 @@ const app = express();
 
 dotenv.config({ path: './config/config.env' });
 app.use(cors({
-    origin: ['https://www.saincrafttechnologies.com', 'https://captain.saincrafttechnologies.com','http://saincrafttechnologies.com', 'https://saincrafttechologies.com', 'https://saincrafttechnologies-static-public-2023.fra1.cdn.digitaloceanspaces.com/'],
+    origin: ['https://www.saincrafttechnologies.com', 'https://captain.saincrafttechnologies.com','http://saincrafttechnologies.com', 'https://saincrafttechologies.com', 'https://saincraft.blr1.digitaloceanspaces.com/'],
     methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH']
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
